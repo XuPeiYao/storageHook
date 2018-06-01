@@ -1,0 +1,24 @@
+{
+  "name": "storage-hook",
+  "version": "1.0.0-beta1",
+  "description": "Subscribeable localStorage or sessionStorage",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "test": "npm run build && node dist/test.js"
+  },
+  "author": "XuPeiYao",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-copy": "^1.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^4.0.2",
+    "storage-mock": "^1.0.3",
+    "typescript": "^2.9.1"
+  },
+  "dependencies": {
+    "rxjs": "^6.2.0"
+  }
+}
