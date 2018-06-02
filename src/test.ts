@@ -45,9 +45,26 @@ async function testOnPropertyChanged() {
   console.assert(value === '456');
 }
 
+async function setValueByProperty() {
+  console.log('=====setValueByProperty=====');
+
+  let fackStorage = mockStorage.localStorage;
+
+  let storage = StorageProxy.create(fackStorage);
+
+  storage['x'] = 'aaaaa';
+
+  console.assert(storage['x'] == storage.getItem('x'));
+
+  storage.setItem('y', 'bbbbb');
+
+  console.assert(storage['y'] == storage.getItem('y'));
+}
+
 async function test() {
   await testOnChanged();
   await testOnPropertyChanged();
+  await setValueByProperty();
 }
 
 test();
