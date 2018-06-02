@@ -1,4 +1,6 @@
-# StorageHook [![npm version](https://badge.fury.io/js/storage-hook.svg)](https://badge.fury.io/js/storage-hook) [![Build Status](https://travis-ci.org/XuPeiYao/storage-hook.svg?branch=master)](https://travis-ci.org/XuPeiYao/storage-hook) [![Downloads](https://img.shields.io/npm/dm/storage-hook.svg)](https://www.npmjs.com/package/storage-hook) [![license](https://img.shields.io/github/license/xupeiyao/storageHook.svg)](https://github.com/XuPeiYao/storageHook/blob/master/LICENSE)
+# StorageHook
+
+[![npm version](https://badge.fury.io/js/storage-hook.svg)](https://badge.fury.io/js/storage-hook) [![Build Status](https://travis-ci.org/XuPeiYao/storageHook.svg?branch=master)](https://travis-ci.org/XuPeiYao/storageHook) [![Downloads](https://img.shields.io/npm/dm/storage-hook.svg)](https://www.npmjs.com/package/storage-hook) [![license](https://img.shields.io/github/license/xupeiyao/storageHook.svg)](https://github.com/XuPeiYao/storageHook/blob/master/LICENSE)
 
 Subscribable localStorage or sessionStorage.
 
