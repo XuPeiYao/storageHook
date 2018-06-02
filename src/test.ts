@@ -1,56 +1,70 @@
-
-
-
 import { StorageProxy } from '.';
 import * as mockStorage from 'storage-mock';
 
 async function sleep(time: number): Promise<void> {
-    return new Promise<void>((res, rej) => {
-        setTimeout(res, time);
-    });
+  return new Promise<void>((res, rej) => {
+    setTimeout(res, time);
+  });
 }
 
 async function testOnChanged() {
-    console.log('=====testOnChanged=====')
+  console.log('=====testOnChanged=====');
 
-    let fackStorage = mockStorage.localStorage
+  let fackStorage = mockStorage.localStorage;
 
-    let storage = StorageProxy.create(fackStorage);
+  let storage = StorageProxy.create(fackStorage);
 
-    let storageChange;
-    storage.onChanged.subscribe(x => {
-        console.log('result: ' + x['a'])
-        storageChange = x;
-    })
+  let storageChange;
+  storage.onChanged.subscribe(x => {
+    console.log('result: ' + x['a']);
+    storageChange = x;
+  });
 
-    storage.setItem('a', '123');
-    await sleep(1000); //停止一秒
+  storage.setItem('a', '123');
+  await sleep(1000); //停止一秒
 
-    console.assert(storageChange.a === '123');
+  console.assert(storageChange.a === '123');
 }
 
 async function testOnPropertyChanged() {
-    console.log('=====testOnPropertyChanged=====')
+  console.log('=====testOnPropertyChanged=====');
 
-    let fackStorage = mockStorage.localStorage
+  let fackStorage = mockStorage.localStorage;
 
-    let storage = StorageProxy.create(fackStorage);
+  let storage = StorageProxy.create(fackStorage);
 
-    let value;
-    storage.getPropertyChangeHook('a').subscribe(x => {
-        console.log('result: ' + x)
-        value = x;
-    })
+  let value;
+  storage.getPropertyChangeHook('a').subscribe(x => {
+    console.log('result: ' + x);
+    value = x;
+  });
 
-    storage.setItem('a', '456');
-    await sleep(1000); //停止一秒
+  storage.setItem('a', '456');
+  await sleep(1000); //停止一秒
 
-    console.assert(value === '456');
+  console.assert(value === '456');
+}
+
+async function setValueByProperty() {
+  console.log('=====setValueByProperty=====');
+
+  let fackStorage = mockStorage.localStorage;
+
+  let storage = StorageProxy.create(fackStorage);
+
+  storage['x'] = 'aaaaa';
+
+  console.assert(storage['x'] == storage.getItem('x'));
+
+  storage.setItem('y', 'bbbbb');
+
+  console.assert(storage['y'] == storage.getItem('y'));
 }
 
 async function test() {
-    await testOnChanged();
-    await testOnPropertyChanged();
+  await testOnChanged();
+  await testOnPropertyChanged();
+  await setValueByProperty();
 }
 
 test();
